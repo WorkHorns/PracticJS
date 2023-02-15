@@ -10,19 +10,38 @@ const personalMovie =
 };
 
 
-for(i=0; i<2; i++)
+// for(i=0; i<2; i++)
+// {
+//     const   a = prompt('Какой из последний фильмов вы смотрели?',''),
+//             b = prompt('На сколько вы его оценили?','')
+    
+//     if(a != null && b != null && a != ' ' && b != ' ' && a.length <= 50)
+//     {
+//         console.log("ok")
+//         personalMovie.movies[a] = b;
+//     }
+//     else 
+//         console.log("error")
+//         i--;
+// }
+let i = 0;
+while(i<2)
 {
     const   a = prompt('Какой из последний фильмов вы смотрели?',''),
             b = prompt('На сколько вы его оценили?','')
     
     if(a != null && b != null && a != ' ' && b != ' ' && a.length <= 50)
     {
-        console.log("ok")
+         console.log("ok")
         personalMovie.movies[a] = b;
+        
     }
     else 
+    {
         console.log("error")
         i--;
+    }
+     i++;
 }
 
 if(personalMovie.count < 10)
@@ -33,7 +52,7 @@ else if(personalMovie.count >= 10 && personalMovie.count < 30)
 {
     console.log("Киноман.")
 }
-else (personalMovie.count >= 30)
+else if (personalMovie.count >= 30)
 {
     console.log("Ошибка")
 }
