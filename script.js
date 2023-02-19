@@ -15,10 +15,11 @@ for(i=0; i<2; i++)
     const   a = prompt('Какой из последний фильмов вы смотрели?',''),
             b = prompt('На сколько вы его оценили?','')
     
-    if(a != null && b != null && a != ' ' && b != ' ' && a.length <= 50)
+    if(a != null && b != null && a != '' && b != '' && a.length <= 10)
     {
         console.log("ok")
         personalMovie.movies[a] = b;
+        i++;
     }
     else 
         console.log("error")
