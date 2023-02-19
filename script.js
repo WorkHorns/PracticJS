@@ -30,25 +30,6 @@ for(i=0; i<2; i++)
         i--;
 }
 
-// let i = 0;
-// while(i<2)
-// {
-//     const   a = prompt('Какой из последний фильмов вы смотрели?',''),
-//             b = prompt('На сколько вы его оценили?','')
-    
-//     if(a != null && b != null && a != ' ' && b != ' ' && a.length <= 50)
-//     {
-//          console.log("ok")
-//         personalMovie.movies[a] = b;
-        
-//     }
-//     else 
-//     {
-//         console.log("error")
-//         i--;
-//     }
-//      i++;
-// }
 
 if(personalMovie.count < 10)
 {
@@ -75,4 +56,23 @@ function writeYourGenres(_personalMovie){
         _personalMovie.genres.push(genre)
     }
     return _personalMovie;
-  }
+}
+// let i = 0;
+// while(i<2)
+// {
+//     const   a = prompt('Какой из последний фильмов вы смотрели?',''),
+//             b = prompt('На сколько вы его оценили?','')
+    
+//     if(a != null && b != null && a != ' ' && b != ' ' && a.length <= 50)
+//     {
+//          console.log("ok")
+//         personalMovie.movies[a] = b;
+        
+//     }
+//     else 
+//     {
+//         console.log("error")
+//         i--;
+//     }
+//      i++;
+// }
