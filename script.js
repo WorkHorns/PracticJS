@@ -1,14 +1,15 @@
 const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','');
 
-const personalMovie = 
+let personalMovie = 
 {
     count: numberOfFilms,
     movies: {},
     actors: {},
     genres: [],
-    privat: Boolean
+    privat: false
 };
 
+showMyDB(personalMovie);
 
 for(i=0; i<2; i++)
 {
@@ -25,6 +26,7 @@ for(i=0; i<2; i++)
         console.log("error")
         i--;
 }
+
 // let i = 0;
 // while(i<2)
 // {
@@ -57,4 +59,11 @@ else if (personalMovie.count >= 30)
 {
     console.log("Ошибка")
 }
-console.log(personalMovie);
+
+function showMyDB(_personalMovie) {
+    if (_personalMovie.privat === false) {
+      console.log(_personalMovie);
+    }
+  }
+
+  
