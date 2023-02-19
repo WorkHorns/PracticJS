@@ -9,7 +9,10 @@ let personalMovie =
     privat: false
 };
 
+writeYourGenres(personalMovie);
+
 showMyDB(personalMovie);
+
 
 for(i=0; i<2; i++)
 {
@@ -66,4 +69,10 @@ function showMyDB(_personalMovie) {
     }
   }
 
-  
+function writeYourGenres(_personalMovie){
+    for (let i = 1; i <= 3; i++){
+      let genre = prompt(`Какой жанр вам нравится? ${i}?`);
+        _personalMovie.genres.push(genre)
+    }
+    return _personalMovie;
+  }
