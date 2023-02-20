@@ -17,11 +17,10 @@ const personalMovie =
 
     genres: function writeYourGenres()
     {
-        for (let i = 1; i <= 3; i++){
-          let genre = prompt(`Какой жанр вам нравится? ${i}?`);
-            personalMovie.genres.push(genre)
+        for (let i = 1; i <= 3; i++)
+        {
+            personalMovie.genres[i - 1] = prompt(`Какой жанр вам нравится? ${i}?`);
         }
-        return personalMovie
     },
 
     privat: function showMyDB() 
