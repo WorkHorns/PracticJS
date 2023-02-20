@@ -15,59 +15,44 @@ const personalMovie =
         }
     },
 
-    genres: function writeYourGenres(_personalMovie){
+    genres: function writeYourGenres()
+    {
         for (let i = 1; i <= 3; i++){
           let genre = prompt(`Какой жанр вам нравится? ${i}?`);
-            _personalMovie.genres.push(genre)
+            personalMovie.genres.push(genre)
         }
-        return _personalMovie
+        return personalMovie
     },
 
-    privat: function showMyDB(_personalMovie) {
-        if (_personalMovie.privat === false) {
-          console.log(_personalMovie);
+    privat: function showMyDB() 
+    {
+        if (personalMovie.privat === false) {
+          console.log(personalMovie);
         }
-      }
+    },
 
+    movies: function rememberMyFilm()
+    {
+        for(i=0; i<2; i++)
+        {
+            const   a = prompt('Какой последний фильмов вы смотрели?',''),
+                b = prompt('Как вы его оценили? По 5 бальной шкале.','')
+    
+            if(a != null && b != null && a != '' && b != '' && a.length <= 10)
+            {
+                console.log("ok")
+                personalMovie.movies[a] = b;
+            }
+            else 
+            {
+                console.log("error")
+                i--;
+            }
+        }
+    }
 };
 
 
 
 
 
-function rememberMyFilm()
-{
-    for(i=0; i<2; i++)
-    {
-    const   a = prompt('Какой из последний фильмов вы смотрели?',''),
-    b = prompt('На сколько вы его оценили?','')
-    
-    if(a != null && b != null && a != '' && b != '' && a.length <= 10)
-    {
-        console.log("ok")
-        personalMovie.movies[a] = b;
-        i++;
-    }
-    else 
-    console.log("error")
-    i--;
-    }
-}
-
-function howManyFilms
-{
-
-    if(personalMovie.count < 10)
-    {
-        console.log("Мало.")
-    }
-    else if(personalMovie.count >= 10 && personalMovie.count < 30)
-    {
-        console.log("Киноман.")
-    }
-    else if (personalMovie.count >= 30)
-    {
-        console.log("Ошибка")
-    }
-}
-    
