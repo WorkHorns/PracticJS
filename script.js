@@ -1,23 +1,46 @@
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','');
-
-let personalMovie = 
+const personalMovie = 
 {
-    count: numberOfFilms,
+    count: 0,
     movies: {},
     actors: {},
     genres: [],
-    privat: false
+    privat: false,
+
+    start: function()
+    {
+        personalMovie.count = +prompt('Сколько фильмов вы уже посмотрели?','');
+        while (personalMovie.count == '' || personalMovie.count == null || isNaN(personalMovie.count))
+        {
+            personalMovie.count = +prompt('Сколько фильмов вы уже посмотрели?','');
+        }
+    },
+
+    genres: function writeYourGenres(_personalMovie){
+        for (let i = 1; i <= 3; i++){
+          let genre = prompt(`Какой жанр вам нравится? ${i}?`);
+            _personalMovie.genres.push(genre)
+        }
+        return _personalMovie
+    },
+
+    privat: function showMyDB(_personalMovie) {
+        if (_personalMovie.privat === false) {
+          console.log(_personalMovie);
+        }
+      }
+
 };
 
-writeYourGenres(personalMovie);
-
-showMyDB(personalMovie);
 
 
-for(i=0; i<2; i++)
+
+
+function rememberMyFilm()
 {
+    for(i=0; i<2; i++)
+    {
     const   a = prompt('Какой из последний фильмов вы смотрели?',''),
-            b = prompt('На сколько вы его оценили?','')
+    b = prompt('На сколько вы его оценили?','')
     
     if(a != null && b != null && a != '' && b != '' && a.length <= 10)
     {
@@ -26,53 +49,25 @@ for(i=0; i<2; i++)
         i++;
     }
     else 
-        console.log("error")
-        i--;
-}
-
-
-if(personalMovie.count < 10)
-{
-    console.log("Мало.")
-}
-else if(personalMovie.count >= 10 && personalMovie.count < 30)
-{
-    console.log("Киноман.")
-}
-else if (personalMovie.count >= 30)
-{
-    console.log("Ошибка")
-}
-
-function showMyDB(_personalMovie) {
-    if (_personalMovie.privat === false) {
-      console.log(_personalMovie);
+    console.log("error")
+    i--;
     }
-  }
-
-function writeYourGenres(_personalMovie){
-    for (let i = 1; i <= 3; i++){
-      let genre = prompt(`Какой жанр вам нравится? ${i}?`);
-        _personalMovie.genres.push(genre)
-    }
-    return _personalMovie;
 }
-// let i = 0;
-// while(i<2)
-// {
-//     const   a = prompt('Какой из последний фильмов вы смотрели?',''),
-//             b = prompt('На сколько вы его оценили?','')
+
+function howManyFilms
+{
+
+    if(personalMovie.count < 10)
+    {
+        console.log("Мало.")
+    }
+    else if(personalMovie.count >= 10 && personalMovie.count < 30)
+    {
+        console.log("Киноман.")
+    }
+    else if (personalMovie.count >= 30)
+    {
+        console.log("Ошибка")
+    }
+}
     
-//     if(a != null && b != null && a != ' ' && b != ' ' && a.length <= 50)
-//     {
-//          console.log("ok")
-//         personalMovie.movies[a] = b;
-        
-//     }
-//     else 
-//     {
-//         console.log("error")
-//         i--;
-//     }
-//      i++;
-// }
