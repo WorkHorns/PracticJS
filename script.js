@@ -17,13 +17,14 @@ const personalMovie =
 
     writeYourGenres: function()
     {
-        if()
         for (let i = 1; i <= 3; i++)
         {
             let genre = prompt(`Какой жанр вам нравится? ${i}?`);
 
             if(genre ==='' || genre == null)
             {
+                console.log("Ошибка");
+                i--;
             }
             else
             {
@@ -32,11 +33,15 @@ const personalMovie =
         }
     },
 
-    showMyDB: function(hidden) 
+    showMyDB: function() 
     {
-        if (!hidden) 
+        if (this.privat == false) 
         {
-          console.log(personalMovie);
+            console.log(personalMovie);
+        }
+        else
+        {
+            console.log("База данных закрыта.");
         }
     },
 
@@ -49,12 +54,12 @@ const personalMovie =
     
             if(a != null && b != null && a != '' && b != '' && a.length <= 50)
             {
-                console.log("ok")
+                console.log("Данные внесены")
                 personalMovie.movies[a] = b;
             }
             else 
             {
-                console.log("error")
+                console.log("Ошибка")
                 i--;
             }
         }
