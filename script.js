@@ -17,9 +17,18 @@ const personalMovie =
 
     writeYourGenres: function()
     {
+        if()
         for (let i = 1; i <= 3; i++)
         {
-            personalMovie.genres[i - 1] = prompt(`Какой жанр вам нравится? ${i}?`);
+            let genre = prompt(`Какой жанр вам нравится? ${i}?`);
+
+            if(genre ==='' || genre == null)
+            {
+            }
+            else
+            {
+                personalMovie.genres[i - 1] = genre;
+            }
         }
     },
 
