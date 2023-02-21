@@ -15,7 +15,7 @@ const personalMovie =
         }
     },
 
-    genres: function writeYourGenres()
+    writeYourGenres: function()
     {
         for (let i = 1; i <= 3; i++)
         {
@@ -23,21 +23,22 @@ const personalMovie =
         }
     },
 
-    privat: function showMyDB() 
+    showMyDB: function(hidden) 
     {
-        if (personalMovie.privat === false) {
+        if (!hidden) 
+        {
           console.log(personalMovie);
         }
     },
 
-    movies: function rememberMyFilm()
+    rememberMyFilm: function()
     {
         for(i=0; i<2; i++)
         {
             const   a = prompt('Какой последний фильмов вы смотрели?',''),
                 b = prompt('Как вы его оценили? По 5 бальной шкале.','')
     
-            if(a != null && b != null && a != '' && b != '' && a.length <= 10)
+            if(a != null && b != null && a != '' && b != '' && a.length <= 50)
             {
                 console.log("ok")
                 personalMovie.movies[a] = b;
@@ -48,6 +49,19 @@ const personalMovie =
                 i--;
             }
         }
+    },
+
+    toggleVisibleMyDB: function()
+    {
+        if(personalMovie.privat)
+        {
+            personalMovie.privat = false;
+        }
+        else
+        {
+            personalMovie.privat = true;
+        }
+
     }
 };
 
