@@ -19,7 +19,7 @@ const personalMovie =
     {
         for (let i = 1; i <= 3; i++)
         {
-            let genre = prompt('Какой жанр вам нравится? ${i}?');
+            let genre = prompt(`Какой жанр вам нравится ${i}?`);
 
             if(genre ==='' || genre == null)
             {
@@ -30,6 +30,8 @@ const personalMovie =
             {
                 personalMovie.genres[i - 1] = genre;
             }
+
+            console.log(`Ваш любимый жанр под номером ${i} это ${genre}`)
         }
     },
 
