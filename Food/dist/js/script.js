@@ -86,22 +86,22 @@ window.addEventListener('DOMContentLoaded',
                 seconds = timer.querySelector('#seconds'),
                 timeInterval = setInterval(updateClock, 1000)
 
-            updateClock();
+        updateClock();
 
-                function updateClock() 
+        function updateClock() 
+        {
+            const t = getTimeRemaining(endTime);
+
+                days.innerHTML = getZero(t.days);
+                hours.innerHTML = getZero(t.hours);
+                minutes.innerHTML = getZero(t.minutes);
+                seconds.innerHTML = getZero(t.seconds);
+
+                if(t.total <= 0)
                 {
-                    const t = getTimeRemaining(endTime);
-
-                    days.innerHTML = getZero(t.days);
-                    hours.innerHTML = getZero(t.hours);
-                    minutes.innerHTML = getZero(t.minutes);
-                    seconds.innerHTML = getZero(t.seconds);
-
-                    if(t.total <= 0)
-                    {
-                        clearInterval( timeInterval);
-                    }
+                    clearInterval( timeInterval);
                 }
+        }
 
     }
 
