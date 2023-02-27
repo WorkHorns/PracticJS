@@ -111,15 +111,15 @@ window.addEventListener('DOMContentLoaded',
     const modalTrigger = document.querySelectorAll('[data-modal]'),
         modal = document.querySelector('.modal'),
         modalCloseBtn = document.querySelector('[data-close]')
+        
+        //Функция открытия модального окна
+        function openModal()
+        {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            clearInterval(modalTimerID);
+        };
 
-        //тригер открытия модального окна
-        modalTrigger.forEach(btn => {
-            btn.addEventListener('click', () =>
-            {
-                modal.classList.add('show');
-                document.body.style.overflow = 'hidden';
-            });
-        });
         //Функция закрития модального окна
         function closeModal()
         {
@@ -127,7 +127,14 @@ window.addEventListener('DOMContentLoaded',
             document.body.style.overflow = '';
         };
 
+        //тригер открытия модального окна
+        modalTrigger.forEach(btn => 
+        {
+            btn.addEventListener('click', openModal) 
+        });
+
         modalCloseBtn.addEventListener('click', closeModal);
+
         //Закрытие модального окна на свободное пространство
         modal.addEventListener('click', (event) => 
         {
@@ -136,12 +143,27 @@ window.addEventListener('DOMContentLoaded',
                 closeModal();
             }
         });
+
         //Закрытие модального окна на "ESC"
-        document.addEventListener('keydown', (e) =>{
+        document.addEventListener('keydown', (e) => {
             if(e.code === 'Escape' && modal.classList.contains('show'))
             {
                 closeModal();
             }
         });
+
+        const modalTimerID = setTimeout(openModal, 3000);
+        
+        //Модальное окно при достижения конца страницы
+        function showModalByScroll(){
+            
+            if(window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight)
+            {
+                openModal();
+                window.removeEventListener('scroll', showModalByScroll);
+            }
+        };
+
+        window.addEventListener('scroll', showModalByScroll);
 });
     
