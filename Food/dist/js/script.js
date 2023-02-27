@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded',
     const tabs = document.querySelectorAll('.tabheader__item'),
             tabContent = document.querySelectorAll('.tabcontent'),
             tabsParent = document.querySelector('.tabheader__items');
-
+    //Скрытие не выбранных табов.
     function hiddeTabContent()
     {
         tabContent.forEach(item =>
@@ -19,14 +19,14 @@ window.addEventListener('DOMContentLoaded',
             item.classList.remove('tabheader__item_active');
         });
     }
-
+    //определения какой таб долженбыть показан.
     function showTabContent(i = 0)
     {
          tabContent[i].classList.add('show', 'fade');
          tabContent[i].classList.remove('hide');
          tabs[i].classList.add('tabheader__item_active');
     }
-
+    
     tabsParent.addEventListener('click', (event) => 
     {
         const target = event.target;
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded',
     
     //Время акции
     const deadLine = '2023-03-28';
-    
+    //подсчет оставшегося времени
     function getTimeRemaining(endTime)
     {
         const t = Date.parse(endTime) - Date.parse(new Date()),
@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded',
           'seconds': seconds  
         };
     }
-    
+    //функция подставноки 0 к дням, часам, минутам, секундам если осталось меньше 10
     function getZero(num)
     {
         if(num >= 0 && num < 10)
@@ -87,7 +87,7 @@ window.addEventListener('DOMContentLoaded',
                 timeInterval = setInterval(updateClock, 1000)
 
         updateClock();
-
+        //Обновление времени
         function updateClock() 
         {
             const t = getTimeRemaining(endTime);
@@ -106,5 +106,42 @@ window.addEventListener('DOMContentLoaded',
     }
 
     setClock('.timer', deadLine);
+
+    //Модальное окно
+    const modalTrigger = document.querySelectorAll('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close]')
+
+        //тригер открытия модального окна
+        modalTrigger.forEach(btn => {
+            btn.addEventListener('click', () =>
+            {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        //Функция закрития модального окна
+        function closeModal()
+        {
+            modal.classList.toggle('show');
+            document.body.style.overflow = '';
+        };
+
+        modalCloseBtn.addEventListener('click', closeModal);
+        //Закрытие модального окна на свободное пространство
+        modal.addEventListener('click', (event) => 
+        {
+            if(event.target === modal)
+            {
+                closeModal();
+            }
+        });
+        //Закрытие модального окна на "ESC"
+        document.addEventListener('keydown', (e) =>{
+            if(e.code === 'Escape' && modal.classList.contains('show'))
+            {
+                closeModal();
+            }
+        });
 });
     
