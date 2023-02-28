@@ -272,12 +272,14 @@ window.addEventListener('DOMContentLoaded',
                 // form.append(statusMessage); 
                 form.insertAdjacentElement('afterend', statusMessage);
 
-                const request = new XMLHttpRequest();
-                request.open('POST', 'server.php');
-                
-                request.setRequestHeader('Content-type', 'application/json'); //Заголовок прописывать не надо если не работаем с форматом JSON
-                const formData = new FormData(form);
+                // const request = new XMLHttpRequest();
+                // request.open('POST', 'server.php');
 
+                
+                
+                // request.setRequestHeader('Content-type', 'application/json'); //Заголовок прописывать не надо если не работаем с форматом JSON
+                const formData = new FormData(form);
+                
                 //Создание json обьекта.
                 const object = {};
                 formData.forEach(function(value, key)
@@ -285,25 +287,41 @@ window.addEventListener('DOMContentLoaded',
                     object[key] = value;
                 });
 
-                const json = JSON.stringify(object); //Для наглядности работы с json
 
-                request.send(json);
-
-                request.addEventListener('load', () => 
-                {
-                    if(request.status === 200)
-                    {
-                        console.log(request.response);
+                fetch('server.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(object)
+                })
+                .then(data => data.text())
+                .then(data => {
+                        console.log(data);
                         showThanksModal(message.success);
-                        form.reset();
                         statusMessage.remove();
-                    }
-                    else
-                    {
+                }).catch(() => {
                         showThanksModal(message.failure);
-                        form.reset();
-                    }
+                }).finally(() => {
+                        form.reset();   
                 });
+                
+                // request.send(json);
+                // request.addEventListener('load', () => 
+                // {
+                //     if(request.status === 200)
+                //     {
+                //         console.log(request.response);
+                //         showThanksModal(message.success);
+                //         form.reset();
+                //         statusMessage.remove();
+                //     }
+                //     else
+                //     {
+                //         showThanksModal(message.failure);
+                //         form.reset();
+                //     }
+                // });
             });
 
             //Модальное окно с благодарностью.
@@ -335,4 +353,5 @@ window.addEventListener('DOMContentLoaded',
             }
         }
     
+
 });
