@@ -223,7 +223,7 @@ window.addEventListener('DOMContentLoaded',
             9,
             '.menu .container',
         ).render();
-
+        //класс с прописанным классом меню
         new MenuCard(
             "img/tabs/elite.jpg",
             "elite",
@@ -234,7 +234,7 @@ window.addEventListener('DOMContentLoaded',
             'menu__item',
             'big'
         ).render();
-
+        //класс с прописанным классом меню
         new MenuCard(
             "img/tabs/post.jpg",
             "post",
@@ -245,4 +245,65 @@ window.addEventListener('DOMContentLoaded',
             'menu__item',
             'big'
         ).render();
+
+        //Отправка данных из форм
+        //переменные для работы.
+        const forms = document.querySelectorAll('form'),
+                message = {
+                    loading: "Загрузка",
+                    success: "OK",
+                    failure: "Error"
+                };
+
+        forms.forEach(item => {
+            postData(item);
+        });
+        //Функция для отправки данных из формы.
+        function postData(form){
+            form.addEventListener('submit', (event) =>{
+                event.preventDefault();
+                //добавление статуса к форме
+                const statusMessage = document.createElement('div');
+                statusMessage.classList.add('status');
+                statusMessage.textContent = message.loading;
+                form.append(statusMessage);
+
+                const request = new XMLHttpRequest();
+                request.open('POST', 'server.php');
+                
+                request.setRequestHeader('Content-type', 'application/json'); //Заголовок прописывать не надо если не работаем с форматом JSON
+                const formData = new FormData(form);
+
+                //Создание json обьекта.
+                const object = {};
+                formData.forEach(function(value, key)
+                {
+                    object[key] = value;
+                });
+
+                const json = JSON.stringify(object); //Для наглядности работы с json
+
+                request.send(json);
+
+                request.addEventListener('load', () => 
+                {
+                    if(request.status === 200)
+                    {
+                        console.log(request.response);
+                        statusMessage.textContent = message.success;
+                        form.reset();
+                        setTimeout(() => {
+                            statusMessage.remove();
+                        }, 2000);
+                    }
+                    else
+                    {
+                        statusMessage.textContent = message.failure;
+                        form.reset();
+                    }
+                })
+            });
+        }
+
+
 });
