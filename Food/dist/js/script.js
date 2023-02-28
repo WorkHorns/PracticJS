@@ -301,7 +301,7 @@ window.addEventListener('DOMContentLoaded',
                         statusMessage.textContent = message.failure;
                         form.reset();
                     }
-                })
+                });
             });
         }
 
