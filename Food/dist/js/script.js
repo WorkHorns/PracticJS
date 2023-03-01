@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded',
     const tabs = document.querySelectorAll('.tabheader__item'),
             tabContent = document.querySelectorAll('.tabcontent'),
             tabsParent = document.querySelector('.tabheader__items');
+
     //Скрытие не выбранных табов.
     function hiddeTabContent()
     {
@@ -19,6 +20,7 @@ window.addEventListener('DOMContentLoaded',
             item.classList.remove('tabheader__item_active');
         });
     }
+
     //определения какой таб долженбыть показан.
     function showTabContent(i = 0)
     {
@@ -47,7 +49,6 @@ window.addEventListener('DOMContentLoaded',
     hiddeTabContent();
     showTabContent();
     
-    
     //Время акции
     const deadLine = '2023-03-28';
     //подсчет оставшегося времени
@@ -67,6 +68,7 @@ window.addEventListener('DOMContentLoaded',
           'seconds': seconds  
         };
     }
+    
     //функция подставноки 0 к дням, часам, минутам, секундам если осталось меньше 10
     function getZero(num)
     {
@@ -257,6 +259,7 @@ window.addEventListener('DOMContentLoaded',
         forms.forEach(item => {
             postData(item);
         });
+
         //Функция для отправки данных из формы.
         function postData(form){
             form.addEventListener('submit', (event) =>{
@@ -274,10 +277,8 @@ window.addEventListener('DOMContentLoaded',
 
                 // const request = new XMLHttpRequest();
                 // request.open('POST', 'server.php');
-
-                
-                
                 // request.setRequestHeader('Content-type', 'application/json'); //Заголовок прописывать не надо если не работаем с форматом JSON
+                
                 const formData = new FormData(form);
                 
                 //Создание json обьекта.
@@ -352,9 +353,10 @@ window.addEventListener('DOMContentLoaded',
                 },4000);
             }
         }
-    
-        fetch('db.json')
-        .then(data => data.json())
-        .then(res => console.log(res));
+        
+        //Перебор данных из 'db.json' и вывод в консоль. 
+        // fetch('db.json')
+        // .then(data => data.json())
+        // .then(res => console.log(res));
 
 });
