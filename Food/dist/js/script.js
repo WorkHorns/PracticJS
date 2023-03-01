@@ -354,7 +354,7 @@ window.addEventListener('DOMContentLoaded',
             }
         }
         
-        //Перебор данных из 'db.json' и вывод в консоль. 
+        // Перебор данных из 'db.json' и вывод в консоль. 
         // fetch('db.json')
         // .then(data => data.json())
         // .then(res => console.log(res));
