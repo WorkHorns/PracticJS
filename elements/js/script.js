@@ -1,25 +1,43 @@
 'use strict';
 // По играть со стилями, поиграть с формами
-const a = document.getElementById('box');
-console.log(a);
+const box = document.getElementById('box'),
+        btns = document.getElementsByTagName('button'),
+        circles = document.getElementsByClassName('circle'),
+        allHeart = document.querySelectorAll('.heart'),
+        oneHeart = document.querySelector('.heart'),
+        wrapper = document.querySelector('.wrapper');
 
-const b = document.getElementsByTagName('button');
-console.log(b[4]);
-
-const c = document.getElementsByClassName('circle');
-console.log(c);
-
-const q = document.querySelectorAll('.heart');
-console.log(q);
-
-q.forEach(item => {
+console.log(box);
+console.log(btns[4]);
+console.log(circles);
+console.log(allHeart);
+allHeart.forEach(item => 
+{
     console.log(item);
 });
+console.log(oneHeart);
 
-const qq = document.querySelector('.heart');
-console.log(qq);
+// box.style.backgroundColor = 'blue';
+// box.style.width = '30px';
+box.style.cssText = 'background-color: blue; width: 500px';
+btns[1].style.borderRadius = '30%';
+circles[0].style.backgroundColor = 'black';
 
-const qw = document.querySelector('div');
-console.log(qw);
+// for(let i = 0; i < allHeart.length; i++)
+// {
+//     allHeart[i].style.backgroundColor = 'yellow';
+// }
+
+allHeart.forEach(item => 
+{
+    item.style.backgroundColor = 'orange';
+});
+
+const a = document.createElement('div');
+
+a.classList.add('black');
+// document.body.append(a);
+wrapper.append(a);
+wrapper.prepend(a);
 
     
