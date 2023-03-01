@@ -3,15 +3,16 @@
 const box = document.getElementById('box'),
         btns = document.getElementsByTagName('button'),
         circles = document.getElementsByClassName('circle'),
-        allHeart = document.querySelectorAll('.heart'),
+        allHearts = document.querySelectorAll('.heart'),
         oneHeart = document.querySelector('.heart'),
         wrapper = document.querySelector('.wrapper');
+        
 
 console.log(box);
 console.log(btns[4]);
 console.log(circles);
-console.log(allHeart);
-allHeart.forEach(item => 
+console.log(allHearts);
+allHearts.forEach(item => 
 {
     console.log(item);
 });
@@ -28,7 +29,7 @@ circles[0].style.backgroundColor = 'black';
 //     allHeart[i].style.backgroundColor = 'yellow';
 // }
 
-allHeart.forEach(item => 
+allHearts.forEach(item => 
 {
     item.style.backgroundColor = 'orange';
 });
@@ -36,8 +37,14 @@ allHeart.forEach(item =>
 const a = document.createElement('div');
 
 a.classList.add('black');
-// document.body.append(a);
-wrapper.append(a);
-wrapper.prepend(a);
+// document.body.append(a); //Вставляем эелемент в конце body
+// wrapper.append(a); //Вставляем элемент после
+wrapper.prepend(a); //Вставляем элемент до
 
-    
+allHearts[0].after(a); //Вставляем элемент после первого элемента массива
+// allHearts[0].before(a); //Вставляем элемент перед первым элементом массива
+// circles[0].remove(); //Удаление элемента по номеру массива
+// allHearts[2].replaceWith(circles[0]); //Перемещение и замена элемента  
+a.innerHTML = 'Hi'; //Можно добавлять HTML структуру или текст
+// a.textContent = 'Hello'; //Добавление только Текста
+a.insertAdjacentHTML('beforebegin','<h2>Hello</h2>'); //Вставление HTML элементов
