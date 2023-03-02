@@ -273,9 +273,10 @@ window.addEventListener('DOMContentLoaded',
             `;
             form.append(statusMessage);
 
-            const request = new XMLHttpRequest();
-            request.open('POST', 'server.php');
-            request.setRequestHeader('Content-type', 'application/json');
+            //Предвача данных через XML
+            // const request = new XMLHttpRequest(); 
+            // request.open('POST', 'server.php');
+            // request.setRequestHeader('Content-type', 'application/json');
 
             const formData = new FormData(form);
 
@@ -285,20 +286,41 @@ window.addEventListener('DOMContentLoaded',
                 obj[key] = value;
             });
 
-            request.send(JSON.stringify(obj));
+            const jsonPOST = JSON.stringify(obj);
 
-            request.addEventListener('load', ()=> {
-                if(request.status === 200) {
-                    // statusMessage.textContent = message.success; //Старое оповещение
-                    showThanksModalWindow(message.success);
-                    form.reset();
-                    statusMessage.remove()
-                }
-                else {
-                    // statusMessage.textContent = message.fail; // старое оповещение
-                    showThanksModalWindow(message.fail);
-                }
+            fetch('server.php', {
+               method: 'POST',
+               headers: 
+                {
+                'Content-type': 'application/json'
+                },
+                body: jsonPOST
+
             })
+            .then(data => data.text())
+            .then(data =>{
+                console.log(data)
+                showThanksModalWindow(message.success);
+                statusMessage.remove();
+            }).catch(()=> {
+                showThanksModalWindow(message.fail);
+            }).finally(()=>{
+                form.reset();
+            });
+
+
+            // request.addEventListener('load', ()=> {
+            //     if(request.status === 200) {
+            //         // statusMessage.textContent = message.success; //Старое оповещение
+            //         showThanksModalWindow(message.success);
+            //         form.reset();
+            //         statusMessage.remove()
+            //     }
+            //     else {
+            //         // statusMessage.textContent = message.fail; // старое оповещение
+            //         showThanksModalWindow(message.fail);
+            //     }
+            // })
         });
     };
 
