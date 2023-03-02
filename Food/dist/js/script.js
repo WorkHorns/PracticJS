@@ -251,7 +251,7 @@ window.addEventListener('DOMContentLoaded',
     const forms = document.querySelectorAll('form');
 
     const message = {
-        loading: 'Загрузка',
+        loading: 'Load',
         success: 'OK',
         fail: 'Fail'
     };
