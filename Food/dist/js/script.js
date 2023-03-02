@@ -252,7 +252,7 @@ window.addEventListener('DOMContentLoaded',
     const forms = document.querySelectorAll('form');
 
     const message = {
-        loading: 'Load',
+        loading: 'img/form/spinner.svg',
         success: 'OK',
         fail: 'Fail'
     };
@@ -265,9 +265,12 @@ window.addEventListener('DOMContentLoaded',
         form.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            const statusMessage = document.createElement('div');
-            statusMessage.classList.add('status');
-            statusMessage.textContent = message.loading;
+            const statusMessage = document.createElement('img');
+            statusMessage.src = message.loading;
+            statusMessage.style.cssText = `
+                 display: block;
+                 margin: 0 auto;           
+            `;
             form.append(statusMessage);
 
             const request = new XMLHttpRequest();
