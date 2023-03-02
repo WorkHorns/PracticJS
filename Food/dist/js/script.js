@@ -285,18 +285,41 @@ window.addEventListener('DOMContentLoaded',
 
             request.addEventListener('load', ()=> {
                 if(request.status === 200) {
-                    statusMessage.textContent = message.success;
+                    // statusMessage.textContent = message.success;
+                    showThanksModalWindow(message.success);
                     form.reset();
-                    setTimeout(() =>{
-                        statusMessage.remove();
-                    },3000);
+                    statusMessage.remove()
                 }
                 else {
-                    statusMessage.textContent = message.fail;
-                    form.reset();
+                    // statusMessage.textContent = message.fail;
+                    showThanksModalWindow(message.fail);
                 }
             })
         });
     };
 
+    function showThanksModalWindow(message)
+    {
+        const prevModalDialog = document.querySelector('.modal__dialog');
+
+        prevModalDialog.classList.add('hide');
+        openModal();
+
+        const thanksModal = document.createElement('div');
+        thanksModal.classList.add('modal__dialog');
+        thanksModal.innerHTML = `
+            <div class="modal__content">
+                <div class="modal__close" data-close>x</div>
+                <div class="modal__title">${message}</div>
+            </div>
+        `;
+
+        document.querySelector('.modal').append(thanksModal);
+        setTimeout(()=> {
+            thanksModal.remove();
+            prevModalDialog.classList.add('show');
+            prevModalDialog.classList.remove('hide');
+            closeModal();
+        })
+    };
 });
