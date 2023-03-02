@@ -246,7 +246,8 @@ window.addEventListener('DOMContentLoaded',
             'menu__item',
             'big'
         ).render();
-            //Forms
+
+    //Forms
 
     const forms = document.querySelectorAll('form');
 
@@ -285,13 +286,13 @@ window.addEventListener('DOMContentLoaded',
 
             request.addEventListener('load', ()=> {
                 if(request.status === 200) {
-                    // statusMessage.textContent = message.success;
+                    // statusMessage.textContent = message.success; //Старое оповещение
                     showThanksModalWindow(message.success);
                     form.reset();
                     statusMessage.remove()
                 }
                 else {
-                    // statusMessage.textContent = message.fail;
+                    // statusMessage.textContent = message.fail; // старое оповещение
                     showThanksModalWindow(message.fail);
                 }
             })
@@ -320,6 +321,6 @@ window.addEventListener('DOMContentLoaded',
             prevModalDialog.classList.add('show');
             prevModalDialog.classList.remove('hide');
             closeModal();
-        })
+        },3000)
     };
 });
