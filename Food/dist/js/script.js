@@ -246,8 +246,4 @@ window.addEventListener('DOMContentLoaded',
             'menu__item',
             'big'
         ).render();
-
-        //Отправка данных из форм
-        //Переменные для работы.
-
 });
