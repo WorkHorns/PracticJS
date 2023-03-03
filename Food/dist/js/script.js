@@ -225,15 +225,24 @@ window.addEventListener('DOMContentLoaded',
             return await res.json();
         };
 
-        getResours('http://localhost:3000/menu')
+        //Интеграция библиотеки
+        axios.get('http://localhost:3000/menu')
             .then(data => {
-                data.forEach(({img,altimg,title,descr,price}) => {
+                    data.data.forEach(({img,altimg,title,descr,price}) => {
                     new MenuCard(img,altimg,title,descr,price, '.menu .container').render();
-                });
             });
+        });
+
+        //Получение данных из JSON
+        // getResours('http://localhost:3000/menu')
+        //     .then(data => {
+        //         data.forEach(({img,altimg,title,descr,price}) => {
+        //             new MenuCard(img,altimg,title,descr,price, '.menu .container').render();
+        //         });
+        //     });
 
 
-        //класс с дефолтным классом меню
+        //класс с дефолтным меню
         // new MenuCard(
         //     "img/tabs/vegy.jpg",
         //     "vegy",
@@ -368,9 +377,9 @@ window.addEventListener('DOMContentLoaded',
             closeModal();
         },3000)
     };
-    //база с меню
-    fetch('http://localhost:3000/menu')
-        .then(data => data.json())
-        .then(res => console.log(res));
+    // //база с меню
+    // fetch('http://localhost:3000/menu')
+    //     .then(data => data.json())
+    //     .then(res => console.log(res));
 
 });
