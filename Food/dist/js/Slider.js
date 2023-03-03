@@ -35,18 +35,10 @@ const slides = document.querySelectorAll('.offer__slide'),
             dots = [];
 
     indicators.classList.add('carousel-indicators');
-    indicators.style.cssText = `
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 15;
-        display: flex;
-        justify-content: center;
-        margin-right: 15%;
-        margin-left: 15%;
-        list-style: none;
-    `;
+    indicators.innerHTML = `
+            <div class="carousel-indicators">
+            </div>
+            `;
     slider.append(indicators);
 
     for(let i = 0; i < slides.length; i++){
