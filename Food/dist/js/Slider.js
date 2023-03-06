@@ -67,10 +67,11 @@ const slides = document.querySelectorAll('.offer__slide'),
     }
 
     next.addEventListener('click', () =>{
-        if(offset == +width.slice(0, width.length - 2) * (slides.length - 1)){
+        // if(offset == +width.slice(0, width.length - 2) * (slides.length - 1)){
+        if(offset == deleteNotDigits() * (slides.length - 1)){
             offset = 0;
         } else {
-            offset += +width.slice(0, width.length - 2);
+            offset += deleteNotDigits();
         }
     slidesField.style.transform = `translateX(-${offset}px)`;
         if(sliderIndex == slides.length){
@@ -85,9 +86,9 @@ const slides = document.querySelectorAll('.offer__slide'),
 
     prev.addEventListener('click', () =>{
         if(offset == 0){
-            offset = +width.slice(0, width.length - 2) * (slides.length - 1);
+            offset = deleteNotDigits() * (slides.length - 1);
         } else {
-            offset -= +width.slice(0, width.length - 2);
+            offset -= deleteNotDigits();
         }
     slidesField.style.transform = `translateX(-${offset}px)`;
         if(sliderIndex == 1){
@@ -105,7 +106,7 @@ const slides = document.querySelectorAll('.offer__slide'),
             const slideTo = event.target.getAttribute('data-slide-to');
 
             sliderIndex = slideTo;
-            offset = +width.slice(0, width.length - 2) * (slideTo - 1);
+            offset = deleteNotDigits() * (slideTo - 1);
             slidesField.style.transform = `translateX(-${offset}px)`;
 
             currentTarget();
@@ -125,5 +126,10 @@ const slides = document.querySelectorAll('.offer__slide'),
         dots.forEach(dot => dot.style.opacity = '.5');
         dots[sliderIndex -1].style.opacity = 1;
     };
+
+    function deleteNotDigits(){
+       return +width.replace(/\D/g, '');
+    };
+
 
 
