@@ -1,3 +1,5 @@
+function slider(){
+
 const slides = document.querySelectorAll('.offer__slide'),
         slider = document.querySelector('.offer__slider'),
         prev = document.querySelector('.offer__slider-prev'),
@@ -130,6 +132,8 @@ const slides = document.querySelectorAll('.offer__slide'),
     function deleteNotDigits(){
        return +width.replace(/\D/g, '');
     };
+}
 
+module.exports = slider;
 
 
