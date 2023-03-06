@@ -16,9 +16,9 @@ if(localStorage.getItem('ratio')) {
 }
 
     //Калькулятор
-    function calcTotal(){
+    function calcTotal() {
         //Условие с пустыми значениями
-        if(!sex || !height || !weight || !age || !ratio ){
+        if(!sex || !height || !weight || !age || !ratio ) {
             result.textContent = '____';
             return;
         }
@@ -34,7 +34,7 @@ if(localStorage.getItem('ratio')) {
         const elements = document.querySelectorAll(selector);
 
         elements.forEach(element => {
-            element.addEventListener('click', (event)=>{
+            element.addEventListener('click', (event)=> {
                 if(event.target.getAttribute('data-ratio') ) {
                     ratio = +event.target.getAttribute('data-ratio');
                     localStorage.setItem('ratio', +event.target.getAttribute('data-ratio'));
@@ -43,7 +43,7 @@ if(localStorage.getItem('ratio')) {
                     localStorage.setItem('sex', event.target.getAttribute('id'));
                 }
     
-                elements.forEach(element =>{
+                elements.forEach(element => {
                     element.classList.remove(activeClass);
                 });
     
@@ -57,12 +57,12 @@ if(localStorage.getItem('ratio')) {
         const input = document.querySelector(selector);
 
         input.addEventListener('input', () => {
-            if(input.value.match(/\D/g)){
+            if(input.value.match(/\D/g)) {
                 input.style.border = '1px solid red';
             } else {
                 input.style.border = 'none';
             }
-            switch(input.getAttribute('id')){
+            switch(input.getAttribute('id')) {
                 case 'height':
                         height = +input.value;
                         break;
@@ -76,7 +76,7 @@ if(localStorage.getItem('ratio')) {
             calcTotal();
         });
     };
-    //
+    //Полученеие данных из lockalStoredge если они там есть и отображение их визуально
     function getLocalStoredge(selector, activeClass) {
         const element = document.querySelectorAll(selector);
         element.forEach(item => {
