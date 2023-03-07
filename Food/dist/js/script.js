@@ -1,3 +1,6 @@
+    require('es6-promise').polyfill(); //подключение поливил
+    import 'nodelist-foreach-polyfill';
+    
     import timer from './modules/timer';
     import tabs from './modules/tabs';
     import menu from './modules/menu';
