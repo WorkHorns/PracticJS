@@ -1,6 +1,8 @@
 function slider(){
+    let sliderIndex = 1;
+    let offset = 0;
 
-const slides = document.querySelectorAll('.offer__slide'),
+    const slides = document.querySelectorAll('.offer__slide'),
         slider = document.querySelector('.offer__slider'),
         prev = document.querySelector('.offer__slider-prev'),
         next = document.querySelector('.offer__slider-next'),
@@ -10,8 +12,6 @@ const slides = document.querySelectorAll('.offer__slide'),
         slidesField = document.querySelector('.offer__slider-inner'),
         width = window.getComputedStyle(slidesWrepper).width;
 
-    let sliderIndex = 1;
-    let offset = 0;
 
     if(slides.length < 10){
         total.textContent = `0${slides.length}`;
@@ -33,7 +33,7 @@ const slides = document.querySelectorAll('.offer__slide'),
 
     slider.style.position = 'relative';
 
-    const indicators = document.createElement('ol');
+    const indicators = document.createElement('ol'),
             dots = [];
 
     indicators.classList.add('carousel-indicators');
@@ -134,6 +134,6 @@ const slides = document.querySelectorAll('.offer__slide'),
     };
 }
 
-module.exports = slider;
+export default slider;
 
 

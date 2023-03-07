@@ -62,4 +62,4 @@
 
 }
 
-module.exports = timer;
+export default timer;
