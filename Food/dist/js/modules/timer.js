@@ -1,7 +1,5 @@
- function timer() {
- 
-    //Время акции
-    const deadLine = '2023-03-28';
+ function timer(id, deadLine) {
+   
     //подсчет оставшегося времени
     function getTimeRemaining(endTime)
     {
@@ -58,7 +56,7 @@
 
     }
 
-    setClock('.timer', deadLine);
+    setClock(id, deadLine);
 
 }
 
